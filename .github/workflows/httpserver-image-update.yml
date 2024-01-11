@@ -16,6 +16,7 @@ jobs:
         cmd: yq eval '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i httpserver/deployment.yaml
       
     - uses: stefanzweifel/git-auto-commit-action@v4
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        token: ${{ secrets.PAT }}
         commit_message: Apply image name changes
