@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpserver-argo-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/toffguy77/argocd-k8sInAction-config.git
+    targetRevision: HEAD
+    path: httpserver
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: kubia
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

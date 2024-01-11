@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpserver
+spec:
+  selector:
+    matchLabels:
+      app: httpserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: httpserver
+    spec:
+      containers:
+        - name: httpserver
+          image: ghcr.io/toffguy77/k8sinaction:main
+          ports:
+            - containerPort: 8080
