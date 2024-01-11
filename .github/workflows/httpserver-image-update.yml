@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PAT }}
 
     - name: Update Image Version
       id: imgupd
@@ -15,6 +17,10 @@ jobs:
       with:
         cmd: yq eval '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i httpserver/deployment.yaml
       
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Push changes
+      uses: EndBug/add-and-commit@v9
       with:
-        commit_message: Apply image name changes
+        message: Show GitHub Actions logo
+        committer_name: Dmitry Spasskiy
+        committer_email: toffguy77@gmail.com
+        add: '.'
