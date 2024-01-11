@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/toffguy77/argocd-k8sInAction-config.git
+    repoURL: https://github.com/toffguy77/argocd-k8sinaction-config.git
     targetRevision: HEAD
     path: httpserver
   destination: 
