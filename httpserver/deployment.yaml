@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: httpserver
-          image: 'ghcr.io/toffguy77/k8sinaction:sha-d1e10e1'
+          image: 'ghcr.io/toffguy77/k8sinaction:sha-f7d9b49'
           ports:
             - containerPort: 8080
